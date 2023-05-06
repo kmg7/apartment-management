@@ -35,6 +35,17 @@ class _$AppRouter extends RootStackRouter {
         child: const ApartmentManagementView(),
       );
     },
+    ApartmentDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ApartmentDetailRouteArgs>(
+          orElse: () => const ApartmentDetailRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ApartmentDetailView(
+          key: args.key,
+          apartment: args.apartment,
+        ),
+      );
+    },
   };
 
   @override
@@ -50,6 +61,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ApartmentManagementRoute.name,
           path: '/apartment',
+        ),
+        RouteConfig(
+          ApartmentDetailRoute.name,
+          path: '/apartmentDetails',
         ),
       ];
 }
@@ -88,4 +103,38 @@ class ApartmentManagementRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ApartmentManagementRoute';
+}
+
+/// generated route for
+/// [ApartmentDetailView]
+class ApartmentDetailRoute extends PageRouteInfo<ApartmentDetailRouteArgs> {
+  ApartmentDetailRoute({
+    Key? key,
+    Apartment? apartment,
+  }) : super(
+          ApartmentDetailRoute.name,
+          path: '/apartmentDetails',
+          args: ApartmentDetailRouteArgs(
+            key: key,
+            apartment: apartment,
+          ),
+        );
+
+  static const String name = 'ApartmentDetailRoute';
+}
+
+class ApartmentDetailRouteArgs {
+  const ApartmentDetailRouteArgs({
+    this.key,
+    this.apartment,
+  });
+
+  final Key? key;
+
+  final Apartment? apartment;
+
+  @override
+  String toString() {
+    return 'ApartmentDetailRouteArgs{key: $key, apartment: $apartment}';
+  }
 }

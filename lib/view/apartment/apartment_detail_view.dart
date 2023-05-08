@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:estate_management/controller/apartment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:estate_management/model/apartment_model.dart';
+import '../../controller/apartment_controller.dart';
+import '../../model/apartment_model.dart';
 
 class ApartmentDetailView extends ConsumerWidget {
   ApartmentDetailView({
@@ -59,11 +59,11 @@ class ApartmentDetailView extends ConsumerWidget {
                   final controller = ApartmentController.instance;
                   if (mode) {
                     await controller.create(
-                        data: apartment.copyWith(name: _nameController.text, adress: _addressController.text, warming: _warmingController.text));
+                        data: apartment.copyWith(name: _nameController.text, address: _addressController.text, warming: _warmingController.text));
                   } else {
                     await controller.update(
                         id: apartment.id,
-                        data: apartment.copyWith(name: _nameController.text, adress: _addressController.text, warming: _warmingController.text));
+                        data: apartment.copyWith(name: _nameController.text, address: _addressController.text, warming: _warmingController.text));
                     mode = false;
                   }
                   if (context.mounted) {

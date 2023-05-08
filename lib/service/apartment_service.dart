@@ -1,4 +1,4 @@
-import 'package:estate_management/model/apartment_model.dart';
+import '../model/apartment_model.dart';
 
 import '../common/cache/cache_manager.dart';
 
@@ -11,14 +11,14 @@ class ApartmentService {
 
   ApartmentService._init();
 
-  final CacheManager _db = CacheManager(path: 'apartments');
-
+  final _db = CacheManager.instance;
+  final _path = 'apartments';
   Future<void> create({required Apartment data}) async {
-    await _db.write(id: data.id, data: data.toJson());
+    await _db.write(_path, id: data.id, data: data.toJson());
   }
 
   Future<Apartment?> read({required String id}) async {
-    final apartment = await _db.read(key: id);
+    final apartment = await _db.read(_path, key: id);
     if (apartment != null) {
       return Apartment.fromJson(apartment);
     }
@@ -27,7 +27,7 @@ class ApartmentService {
 
   Future<List<Apartment>> readAll() async {
     List<Apartment> apartments = [];
-    final dbResponse = await _db.read();
+    final dbResponse = await _db.read(_path);
     for (var element in dbResponse) {
       apartments.add(Apartment.fromJson(element));
     }
@@ -35,14 +35,14 @@ class ApartmentService {
   }
 
   Future<void> delete({required String id}) async {
-    await _db.delete(id: id);
+    await _db.delete(_path, id: id);
   }
 
   Future<void> update({required String id, required Apartment data}) async {
-    await _db.write(id: id, data: data.toJson());
+    await _db.write(_path, id: id, data: data.toJson());
   }
 
   Future<void> clear() async {
-    await _db.drop();
+    await _db.drop(_path);
   }
 }

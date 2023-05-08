@@ -1,6 +1,7 @@
-import 'package:uuid/uuid.dart';
-import 'package:flutter/material.dart';
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 @immutable
 class Apartment {
@@ -19,13 +20,13 @@ class Apartment {
   Apartment copyWith({
     String? id,
     String? name,
-    String? adress,
+    String? address,
     String? warming,
   }) {
     return Apartment(
       id: id ?? this.id,
       name: name ?? this.name,
-      address: adress ?? address,
+      address: address ?? this.address,
       warming: warming ?? this.warming,
     );
   }

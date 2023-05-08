@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:estate_management/common/router/app_router.dart';
-import 'package:estate_management/controller/apartment_controller.dart';
+import '../../common/router/app_router.dart';
+import '../../controller/apartment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

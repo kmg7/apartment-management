@@ -24,6 +24,12 @@ class MainView extends HookConsumerWidget {
             trailing: const Icon(Icons.chevron_right_outlined),
             title: const Text('Resident Management'),
             onTap: () => context.router.push(const ResidentManagementRoute()),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home_outlined),
+            trailing: const Icon(Icons.chevron_right_outlined),
+            title: const Text('Residence Management'),
+            onTap: () => context.router.push(const ResidenceManagementRoute()),
           )
         ],
       ),
